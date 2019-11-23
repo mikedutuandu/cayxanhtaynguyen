@@ -16,7 +16,7 @@ django-el-pagination==3.0.1
 django-filter==1.0.1
 django-imagekit==4.0
 django-registration-redux==1.4
-djangorestframework==3.5.4
+djangorestframework==3.9.1
 djangorestframework-jwt==1.9.0
 oauthlib==2.0.1
 olefile==0.44
