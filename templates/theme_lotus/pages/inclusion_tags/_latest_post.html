@@ -1,0 +1,35 @@
+{% load staticfiles %}
+
+<div class="sidebar-widget outer-bottom-small wow fadeInUp hidden-xs">
+    <h3 class="section-title">Bài viết mới nhất</h3>
+    <div class="sidebar-widget-body outer-top-xs">
+        <div class="owl-carousel sidebar-carousel special-offer custom-carousel owl-theme outer-top-xs">
+            <div class="item">
+                <div class="products special-product">
+                      {% for post in posts %}
+                        <div class="product">
+                            <div class="product-micro">
+                                <div class="row product-micro-row post-micro-row">
+                                    <div class="col col-xs-5">
+                                        <div class="product-image">
+                                            <div class="image"><a href="{{ post.get_absolute_url }}"> <img
+                                                    src="{{ post.image_thumb2.url }}" alt="">
+                                            </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col col-xs-7">
+                                        <div class="product-info">
+                                            <h3 class="name"><a href="{{ post.get_absolute_url }}">{{ post.title }}</a></h3>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

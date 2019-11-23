@@ -1,0 +1,185 @@
+{% extends "theme_lotus/layout.html" %}
+{% load staticfiles %}
+{% load inclusion_tags %}
+{% block breakcrumb %}
+    <div class="breadcrumb">
+        <div class="container">
+            <div class="breadcrumb-inner">
+                <ul class="list-inline list-unstyled">
+                    <li><a href="{% url 'home' %}">Trang chủ</a></li>
+                    <li><a href="{{ object.default.get_absolute_url }}">{{ object.default.title }}</a></li>
+                    <li class='active'>{{ object.title }}</li>
+                </ul>
+            </div><!-- /.breadcrumb-inner -->
+        </div><!-- /.container -->
+    </div><!-- /.breadcrumb -->
+{% endblock breakcrumb %}
+{% block seo %}
+        {% seo_post object %}
+{% endblock seo %}
+{% block content %}
+
+    <div class="body-content outer-top-xs">
+        <div class='container'>
+            <div class='row single-product'>
+                <div class="col-md-3 sidebar">
+                    {% left_nav request %}
+                    {% hot_products %}
+                    {% latest_post %}
+                </div>
+                <div class='col-md-9'>
+                    <div class="detail-block">
+                        <div class="row  wow fadeInUp">
+
+                            <div class="col-xs-12 col-sm-6 col-md-5 gallery-holder">
+                                <div class="product-item-holder size-big single-product-gallery small-gallery">
+
+                                    <div id="owl-single-product">
+                                        {% for product_image in object.productimage_set.all %}
+                                            <div class="single-product-gallery-item" id="slide{{ product_image.id }}">
+                                                <a data-lightbox="image-1" data-title="Gallery"
+                                                   href="{{ product_image.image_thumb7.url }}">
+                                                    <img class="img-responsive" alt=""
+                                                         src="{{ product_image.image_thumb7.url }}"
+                                                         data-echo="{{ product_image.image_thumb7.url }}"/>
+                                                </a>
+                                            </div>
+                                        {% endfor %}
+
+
+                                    </div>
+
+
+                                    <div class="single-product-gallery-thumbs gallery-thumbs">
+
+                                        <div id="owl-single-product-thumbnails">
+                                            {% for product_image in object.productimage_set.all %}
+                                                <div class="item">
+
+                                                    <a class="horizontal-thumb" data-target="#owl-single-product"
+                                                       data-slide="{{ product_image.id }}"
+                                                       href="#slide{{ product_image.id }}">
+                                                        <img class="img-responsive" width="85" alt=""
+                                                             src="{{ product_image.image_thumb2.url }}"
+                                                             data-echo="{{ product_image.image_thumb2.url }}"/>
+                                                    </a>
+                                                </div>
+                                            {% endfor %}
+
+                                        </div>
+
+
+                                    </div>
+
+                                </div>
+                            </div>
+                            <div class='col-sm-6 col-md-7 product-info-block'>
+                                <div class="product-info">
+                                    <h1 class="name">{{ object.title }}</h1>
+                                    <div class="stock-container info-container m-t-10">
+                                        <div class="row">
+                                            <div class="col-sm-2">
+                                                <div class="stock-box">
+                                                    <span class="label">Tình trạng:</span>
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-9">
+                                                <div class="stock-box">
+                                                    <span class="value">Còn hàng</span>
+                                                </div>
+                                            </div>
+                                        </div><!-- /.row -->
+                                    </div><!-- /.stock-container -->
+
+                                    <div class="description-container m-t-20">
+                                        {{ object.short_description }}
+                                    </div><!-- /.description-container -->
+
+                                    <div class="price-container info-container m-t-20">
+                                        <div class="row">
+
+
+                                            <div class="col-sm-12">
+                                                <div class="price-box">
+                                                    {{ object.get_html_price_on_detail }}
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+
+                                    <div class="quantity-container info-container" data-cart="">
+                                        <div class="row">
+
+                                            {% if object.price %}
+                                            <form id='add-form' method='GET' action="{% url 'cart' %}">
+                                                <div class="col-sm-2">
+                                                    <span class="label">SỐ LƯỢNG :</span>
+                                                </div>
+
+                                                <div class="col-sm-2">
+                                                    <div class="cart-quantity">
+                                                        <div class="quant-input">
+                                                            <div class="arrows">
+                                                                <div class="arrow plus gradient"><span class="ir"><i
+                                                                        class="icon fa fa-sort-asc"></i></span></div>
+                                                                <div class="arrow minus gradient"><span class="ir"><i
+                                                                        class="icon fa fa-sort-desc"></i></span></div>
+                                                            </div>
+                                                            <input class='form-control qty' type='text' name='qty'
+                                                                   value='1'/>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-sm-7">
+                                                    <input type="hidden" name='item' value='{{ object.id }}'/>
+
+                                                    <a href="#" class="btn btn-primary"><i
+                                                            class="fa fa-shopping-cart inner-right-vs"></i> THÊM VÀO GIỎ
+                                                        HÀNG</a>
+
+                                                </div>
+                                            </form>
+                                            {% endif %}
+
+                                        </div><!-- /.row -->
+                                    </div><!-- /.quantity-container -->
+
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="product-tabs inner-bottom-xs  wow fadeInUp">
+                        <div class="row">
+                            <div class="col-sm-12">
+
+                                <div class="tab-content">
+
+                                    <div id="description" class="tab-pane in active">
+                                        <div class="product-tab">
+                                            <h4 class="title detail-head-description">MÔ TẢ SẢN PHẨM</h4>
+                                            <p class="text">{{ object.description|safe }}</p>
+                                        </div>
+                                    </div><!-- /.tab-pane -->
+
+                                </div><!-- /.tab-content -->
+                            </div><!-- /.col -->
+                        </div><!-- /.row -->
+                    </div>
+
+
+                    {% include "theme_lotus/products/_product_detail_comment.html" with comments=object.comments content_type=object.get_content_type object_id=object.id %}
+
+
+                    {% include "theme_lotus/products/_product_detail_related.html" with related=related %}
+
+                </div>
+                <div class="clearfix"></div>
+            </div>
+        </div>
+    </div>
+
+{% endblock content %}

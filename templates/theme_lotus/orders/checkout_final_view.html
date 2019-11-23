@@ -1,0 +1,85 @@
+{% extends "theme_lotus/layout.html" %}
+{% load staticfiles %}
+{% load inclusion_tags %}
+{% block breakcrumb %}
+    <div class="breadcrumb">
+        <div class="container">
+            <div class="breadcrumb-inner">
+                <ul class="list-inline list-unstyled">
+                    <li><a href="{% url 'home' %}">Trang chủ</a></li>
+                    <li class='active'>Hoàn tất đơn hàng</li>
+                </ul>
+            </div><!-- /.breadcrumb-inner -->
+        </div><!-- /.container -->
+    </div><!-- /.breadcrumb -->
+{% endblock breakcrumb %}
+{% block content %}
+
+    <div class="body-content">
+        <div class="container">
+            <div class="checkout-box ">
+                <div class="row">
+
+                   <div class="col-md-8">
+                        <div class="panel-group checkout-steps" id="accordion">
+                            <!-- checkout-step-01  -->
+                            <div class="panel panel-default checkout-step-01">
+
+                                <!-- panel-heading -->
+                                <div class="panel-heading">
+                                    <h4 class="unicase-checkout-title">
+                                        <a data-toggle="collapse" class="" data-parent="#accordion" href="#collapseOne">
+                                            <span>+</span> Hoàn tất đơn hàng
+                                        </a>
+                                    </h4>
+                                </div>
+                                <!-- panel-heading -->
+
+                                <div id="collapseOne" class="panel-collapse collapse in">
+
+                                    <!-- panel-body  -->
+                                    <div class="panel-body">
+
+                                        <div class="row">
+
+                                            <!-- already-registered-login -->
+                                            <div class="col-md-12 col-sm-12 already-registered-login">
+                                                <p><strong><u> THỜI GIAN DỰ KIẾN GIAO HÀNG:</u> </strong></p>
+                                                <p>Dự kiến giao hàng sau một ngày kể từ ngày đặt hàng.</p>
+                                                <hr>
+                                                <p><strong><u> ĐỊA CHỈ GIAO HÀNG:</u> </strong></p>
+                                                <p><strong>{{ order.order_address.fullname }}</strong></p>
+                                                <p>Địa chỉ: {{ order.order_address.get_address }}</p>
+                                                <p>Điện thoại: {{ order.order_address.phone }}</p>
+                                                <hr>
+                                                <p><strong><u> HÌNH THỨC THANH TOÁN:</u> </strong></p>
+                                                <P>Thanh toán tiền mặt khi nhận hàng</P>
+                                                <form class="register-form" method="POST" role="form">
+                                                     {% csrf_token %}
+
+                                                    <button type="submit"
+                                                            class="btn-upper btn btn-primary checkout-page-button">Đặt hàng
+                                                    </button>
+                                                </form>
+                                            </div>
+                                            <!-- already-registered-login -->
+
+                                        </div>
+                                    </div>
+                                    <!-- panel-body  -->
+
+                                </div><!-- row -->
+                            </div>
+
+
+                        </div><!-- /.checkout-steps -->
+                    </div>
+
+                     {% include 'theme_lotus/orders/_checkout_order.html' %}
+                </div><!-- /.row -->
+            </div><!-- /.checkout-box -->
+
+        </div><!-- /.container -->
+    </div><!-- /.body-content -->
+
+{% endblock content %}

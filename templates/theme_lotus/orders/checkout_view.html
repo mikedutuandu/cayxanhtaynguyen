@@ -1,0 +1,34 @@
+{% extends "theme_lotus/layout.html" %}
+{% load staticfiles %}
+{% load inclusion_tags %}
+{% block breakcrumb %}
+    <div class="breadcrumb">
+        <div class="container">
+            <div class="breadcrumb-inner">
+                <ul class="list-inline list-unstyled">
+                    <li><a href="{% url 'home' %}">Trang chủ</a></li>
+                    <li class='active'>Thanh toán</li>
+                </ul>
+            </div><!-- /.breadcrumb-inner -->
+        </div><!-- /.container -->
+    </div><!-- /.breadcrumb -->
+{% endblock breakcrumb %}
+{% block content %}
+
+    <div class="body-content">
+        <div class="container">
+            <div class="checkout-box ">
+                <div class="row">
+                    {% if user_can_continue == False %}
+                        {% include 'theme_lotus/orders/_checkout_view_login.html' %}
+                    {% else %}
+                        {% include 'theme_lotus/orders/_checkout_view_address.html' %}
+                    {% endif %}
+
+                    {% include 'theme_lotus/orders/_checkout_order.html' %}
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock content %}

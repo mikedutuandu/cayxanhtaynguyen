@@ -1,0 +1,70 @@
+{% load staticfiles %}
+{% load inclusion_tags %}
+{% load simple_tags %}
+<!DOCTYPE html>
+<html lang="vi-VN">
+<head>
+    <!-- Meta -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+
+    {% block seo %}
+        {% seo_page 'home' %}
+    {% endblock seo %}
+
+    <meta name="author" content="">
+    <meta name="robots" content="all">
+
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="{% static "lotus/css/bootstrap.min.css" %}">
+
+    <!-- Customizable CSS -->
+    <link rel="stylesheet" href="{% static "lotus/css/main.css" %}">
+    <link rel="stylesheet" href="{% static "lotus/css/blue.css" %}">
+    <link rel="stylesheet" href="{% static "lotus/css/owl.carousel.css" %}">
+    <link rel="stylesheet" href="{% static "lotus/css/owl.transitions.css" %}">
+    <link rel="stylesheet" href="{% static "lotus/css/animate.min.css" %}">
+    <link rel="stylesheet" href="{% static "lotus/css/rateit.css" %}">
+    <link rel="stylesheet" href="{% static "lotus/css/bootstrap-select.min.css" %}">
+    <link href="{% static "lotus/css/lightbox.css" %}" rel="stylesheet">
+    <!-- Icons/Glyphs -->
+    <link rel="stylesheet" href="{% static "lotus/css/font-awesome.css" %}">
+    <link rel="stylesheet" href="{% static "lotus/css/custom.css" %}">
+
+    <!-- Fonts -->
+    <link href='http://fonts.googleapis.com/css?family=Roboto:300,400,500,700' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,400italic,600,600italic,700,700italic,800'
+          rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
+    <link rel="shortcut icon" type="image/png" href="{% static "lotus/images/favicon.ico" %}"/>
+    {% get_setting "google_analytics" %}
+</head>
+<body class="cnt-home">
+
+
+{% include "theme_lotus/_header.html" %}
+
+{% block breakcrumb %}
+{% endblock breakcrumb %}
+{% block content %}
+{% endblock content %}
+
+{% include "theme_lotus/_footer.html" %}
+
+
+<!-- JavaScripts placed at the end of the document so the pages load faster -->
+<script src="{% static "lotus/js/jquery-1.11.1.min.js" %}"></script>
+<script src="{% static "lotus/js/bootstrap.min.js" %}"></script>
+<script src="{% static "lotus/js/bootstrap-hover-dropdown.min.js" %}"></script>
+<script src="{% static "lotus/js/owl.carousel.min.js" %}"></script>
+<script src="{% static "lotus/js/echo.min.js" %}"></script>
+<script src="{% static "lotus/js/jquery.easing-1.3.min.js" %}"></script>
+<script src="{% static "lotus/js/bootstrap-slider.min.js" %}"></script>
+<script src="{% static "lotus/js/jquery.rateit.min.js" %}"></script>
+<script type="text/javascript" src="{% static "lotus/js/lightbox.min.js" %}"></script>
+<script src="{% static "lotus/js/bootstrap-select.min.js" %}"></script>
+<script src="{% static "lotus/js/wow.min.js" %}"></script>
+<script src="{% static "lotus/js/scripts.js" %}"></script>
+<script src="{% static "lotus/js/custom.js" %}"></script>
+</body>
+</html>

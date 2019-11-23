@@ -1,0 +1,27 @@
+{% load staticfiles %}
+<div class="col-md-3">
+    <!-- checkout-progress-sidebar -->
+    <div class="checkout-progress-sidebar ">
+        <div class="panel-group">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h4 class="unicase-checkout-title">Tài khoản của tôi</h4>
+                </div>
+                <div class="">
+                    <ul class="nav nav-checkout-progress user-menu list-unstyled">
+                        <li class="{% if 'thong-tin-tai-khoan' in request.get_full_path  %}active{% endif %}"><a href="{% url 'user_profile' %}">
+                            <span style="background-image: url({%  static 'lotus/images/user24.png' %})"></span>
+                            Thông tin tài khoản</a></li>
+                              <li class="{% if 'dia-chi-cua-toi' in request.get_full_path  %}active{% endif %}"><a href="{% url 'user_address' %}">
+                                       <span style="background-image: url({%  static 'lotus/images/address24.png' %})"></span>
+                            Địa chỉ của tôi</a></li>
+                        <li class="{% if 'danh-sach-don-hang' in request.get_full_path  %}active{% endif %}"><a href="{% url 'orders' %}">
+                                       <span style="background-image: url({%  static 'lotus/images/order24.png' %})"></span>
+                            Đơn hàng của tôi</a></li>
+
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,20 @@
+{% load staticfiles %}
+<!-- ================================== TOP NAVIGATION ================================== -->
+<div class="side-menu animate-dropdown" style="margin-bottom: 13px;">
+    <div class="head" style="background: #57b846;"><i class="icon fa fa-bars"></i> Loại sản phẩm</div>
+    <nav class="yamm megamenu-horizontal">
+        <ul class="nav">
+            {% for category in categories %}
+                <li class="menu-item {% if 'loai-san-pham' in request.get_full_path and  category.slug in request.get_full_path  %}active{% endif %}">
+                <a href="{{ category.get_absolute_url }}">
+                    <span class="nav-icon" style="background-image: url({{ category.icon.url }})"></span>
+                    {{ category.title }}
+                </a>
+                </li>
+            {% endfor %}
+
+        </ul>
+        <!-- /.nav -->
+    </nav>
+    <!-- /.megamenu-horizontal -->
+</div>
