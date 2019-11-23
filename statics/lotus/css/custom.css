@@ -217,12 +217,13 @@
     height: auto !important;
 }
 .nav .nav-icon,.user-menu span{
-    width: 20px;
-    height: 20px;
+    width: 30px;
+    height: 30px;
     float: left;
     background-position: bottom center;
     background-repeat: no-repeat;
     margin-right: 5px;
+    margin-top: -5px;
 }
 
 .nav-checkout-progress > li > a {
