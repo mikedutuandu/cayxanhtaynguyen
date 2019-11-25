@@ -55,7 +55,7 @@
 
                 <div class="col-xs-12 col-sm-12 col-md-4 logo-holder">
 
-                    <div class="logo"><a href="home.html">
+                    <div class="logo"><a href="">
                         <img height="130" src="{% get_setting "logo" %}" alt="logo">
                     </a>
                     </div>
@@ -104,7 +104,7 @@
 
                                 {% url 'post_list' as post_list %}
                                 <li {% if request.get_full_path == post_list %} class="active" {% endif %}><a
-                                        href="{{ post_list }}">Đặc sản tây nguyên</a></li>
+                                        href="{{ post_list }}">Cây tây nguyên</a></li>
 
 
                                 {% url 'base_payment' as base_payment %}
